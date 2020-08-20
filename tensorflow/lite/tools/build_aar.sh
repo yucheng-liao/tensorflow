@@ -120,9 +120,9 @@ function generate_flex_aar {
 
   # Build the aar package.
   bazel build -c opt --cxxopt='--std=c++14' \
-      --fat_apk_cpu=${TARGET_ARCHS} \
+      --fat_apk_cpu=${TARGET_ARCHS} --config=monolithic \
       --host_crosstool_top=@bazel_tools//tools/cpp:toolchain \
-      //tmp:tensorflow-lite-select-tf-ops
+      //tmp:tensorflow-lite-select-tf-ops --cxxopt="-Wno-return-type-c-linkage"
 
   OUT_FILES="${OUT_FILES} bazel-bin/tmp/tensorflow-lite-select-tf-ops.aar"
 }

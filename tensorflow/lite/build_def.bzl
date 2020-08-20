@@ -863,6 +863,7 @@ def tflite_custom_android_library(
     android_library(
         name = name,
         manifest = "//tensorflow/lite/java:AndroidManifest.xml",
+        proguard_specs = ["//tensorflow/lite/java:proguard.flags"],
         deps = [
             ":%s_jni" % name,
             "//tensorflow/lite/java:tensorflowlite_java",
